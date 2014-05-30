@@ -1,7 +1,7 @@
 {
 	"name": "Adafruit_TSL2561_U",
 	"author": "Garrett Bartley",
-	"version": "2.0.3",
+	"version": "2.0.4",
 	"license": "BSD",
 	"description": "Unified sensor driver for Adafruit's TSL2561 breakouts"
 }
