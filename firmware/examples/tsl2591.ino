@@ -1,15 +1,14 @@
-/* TSL25911 Digital Light Sensor */
-/* Dynamic Range: 600M:1 */
-/* Maximum Lux: 88K */
-
-#include <Wire.h>
-#include <Adafruit_Sensor.h>
+// This #include statement was automatically added by the Spark IDE.
 #include "Adafruit_TSL2591.h"
+
+// This #include statement was automatically added by the Spark IDE.
+#include "Adafruit_Sensor.h"
 
 // Example for demonstrating the TSL2591 library - public domain!
 
-// connect SCL to analog 5
-// connect SDA to analog 4
+// pinout for Spark Core
+// connect SCL to digital 1
+// connect SDA to digital 0
 // connect Vin to 3.3-5V DC
 // connect GROUND to common ground
 
@@ -39,14 +38,14 @@ void displaySensorDetails(void)
 
 /**************************************************************************/
 /*
-    Configures the gain and integration time for the TSL2561
+    Configures the gain and integration time for the TSL2591
 */
 /**************************************************************************/
 void configureSensor(void)
 {
   // You can change the gain on the fly, to adapt to brighter/dimmer light situations
-  //tsl.setGain(TSL2591_GAIN_LOW);    // 1x gain (bright light)
-  tsl.setGain(TSL2591_GAIN_MED);      // 25x gain
+  tsl.setGain(TSL2591_GAIN_LOW);    // 1x gain (bright light)
+  //tsl.setGain(TSL2591_GAIN_MED);      // 25x gain
   //tsl.setGain(TSL2591_GAIN_HIGH);   // 428x gain
   
   // Changing the integration time gives you a longer time over which to sense light
@@ -102,7 +101,7 @@ void setup(void)
   else 
   {
     Serial.println("No sensor found ... check your wiring?");
-    while (1);
+    //while (1);
   }
     
   /* Display some basic information on this sensor */
@@ -192,7 +191,9 @@ void loop(void)
 { 
   // simpleRead(); 
   // advancedRead();
+  
   unifiedSensorAPIRead();
   
+  //Serial.println("hi2");
   delay(250);
 }

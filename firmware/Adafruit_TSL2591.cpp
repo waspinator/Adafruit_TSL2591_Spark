@@ -6,10 +6,10 @@
     This is a library for the Adafruit TSL2591 breakout board
     This library works with the Adafruit TSL2591 breakout 
     ----> https://www.adafruit.com/products/1980
-	
+  
     Check out the links above for our tutorials and wiring diagrams 
     These chips use I2C to communicate
-	
+  
     Adafruit invests time and resources providing this open source code, 
     please support Adafruit and open-source hardware by purchasing 
     products from Adafruit!
@@ -305,21 +305,16 @@ uint16_t Adafruit_TSL2591::read16(uint8_t reg)
   uint16_t t;
 
   Wire.beginTransmission(TSL2591_ADDR);
-#if ARDUINO >= 100
+
   Wire.write(reg);
-#else
-  Wire.send(reg);
-#endif
+
   Wire.endTransmission();
 
   Wire.requestFrom(TSL2591_ADDR, 2);
-#if ARDUINO >= 100
+
   t = Wire.read();
   x = Wire.read();
-#else
-  t = Wire.receive();
-  x = Wire.receive();
-#endif
+
   x <<= 8;
   x |= t;
   return x;
@@ -328,13 +323,10 @@ uint16_t Adafruit_TSL2591::read16(uint8_t reg)
 void Adafruit_TSL2591::write8 (uint8_t reg, uint8_t value)
 {
   Wire.beginTransmission(TSL2591_ADDR);
-#if ARDUINO >= 100
+
   Wire.write(reg);
   Wire.write(value);
-#else
-  Wire.send(reg);
-  Wire.send(value);
-#endif
+
   Wire.endTransmission();
 }
 
